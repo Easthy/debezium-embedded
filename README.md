@@ -6,6 +6,8 @@
 ## Сборка приложения
 `mvn clean install`
 
+`mvn clean install -X` (дебаг-режим)
+
 ## Запуск приложения
 `mvn exec:java`
 
