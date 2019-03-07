@@ -19,12 +19,12 @@
         <mongodb.database.whitelist>test</mongodb.database.whitelist>
         <mongodb.collection.whitelist>test.producers</mongodb.collection.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mongodb-offset.dat` -->
-        <mongodb.offset.storage.file.filename>mongodb-offset.dat</mongodb.offset.storage.file.filename>
+        <offset.storage.file.filename>mongodb-offset.dat</offset.storage.file.filename>
         
         <version.mongodb.driver>3.10.1</version.mongodb.driver>
 
         <kinesis.region>eu-central-1</kinesis.region>
-        <mongo.kinesis.stream.name>kinesis.opencart.oc_product</mongo.kinesis.stream.name>
+        <kinesis.stream.name>kinesis.opencart.oc_product</kinesis.stream.name>
 
         <version.debezium>0.9.2.Final</version.debezium>
         <version.debezium.tag>0.8</version.debezium.tag>
@@ -113,7 +113,7 @@
                         </systemProperty>
                         <systemProperty>
                             <key>offset.storage.file.filename</key>
-                            <value>${mongodb.offset.storage.file.filename}</value>
+                            <value>${offset.storage.file.filename}</value>
                         </systemProperty>
                         <systemProperty>
                             <key>kinesis.region</key>
@@ -121,7 +121,7 @@
                         </systemProperty>
                         <systemProperty>
                             <key>kinesis.stream.name</key>
-                            <value>${mongo.kinesis.stream.name}</value>
+                            <value>${kinesis.stream.name}</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>

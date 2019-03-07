@@ -26,7 +26,7 @@ import io.debezium.embedded.EmbeddedEngine;
 import io.debezium.util.Clock;
 
 /**
- * Demo for using the Debezium Embedded API to send change events to Amazon Kinesis.
+ * Using the Debezium Embedded API to send change events to Amazon Kinesis.
  */
 public class MongoDataSender implements Runnable {
 

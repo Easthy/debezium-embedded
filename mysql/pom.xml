@@ -17,11 +17,11 @@
         <mysql.database.whitelist>opencart</mysql.database.whitelist>
         <mysql.table.whitelist>opencart.oc_product</mysql.table.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mysql-*.dat` -->
-        <mysql.offset.storage.file.filename>mysql-offset.dat</mysql.offset.storage.file.filename>
-        <mysql.database.history.file.filename>mysql-history.dat</mysql.database.history.file.filename>
+        <offset.storage.file.filename>mysql-offset.dat</offset.storage.file.filename>
+        <database.history.file.filename>mysql-history.dat</database.history.file.filename>
 
         <kinesis.region>eu-central-1</kinesis.region>
-        <mysql.kinesis.stream.name>kinesis.opencart.oc_product</mysql.kinesis.stream.name>
+        <kinesis.stream.name>kinesis.opencart.oc_product</kinesis.stream.name>
 
         <mysql.init.timeout>30000</mysql.init.timeout>
 
@@ -113,11 +113,11 @@
                         </systemProperty>
                         <systemProperty>
                             <key>offset.storage.file.filename</key>
-                            <value>${mysql.offset.storage.file.filename}</value>
+                            <value>${offset.storage.file.filename}</value>
                         </systemProperty>
                         <systemProperty>
                             <key>database.history.file.filename</key>
-                            <value>${mysql.database.history.file.filename}</value>
+                            <value>${database.history.file.filename}</value>
                         </systemProperty>
                         <systemProperty>
                             <key>kinesis.region</key>
@@ -125,7 +125,7 @@
                         </systemProperty>
                         <systemProperty>
                             <key>kinesis.stream.name</key>
-                            <value>${mysql.kinesis.stream.name}</value>
+                            <value>${kinesis.stream.name}</value>
                         </systemProperty>
                     </systemProperties>
                 </configuration>
