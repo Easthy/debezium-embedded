@@ -46,7 +46,7 @@ public class MongoDataSender implements Runnable {
 
                 .with(EmbeddedEngine.OFFSET_STORAGE, "org.apache.kafka.connect.storage.FileOffsetBackingStore")
                 .with("offset.storage.file.filename", System.getProperty("offset.storage.file.filename"))
-                .with("offset.flush.interval.ms", 60000) this was not tested
+                .with("offset.flush.interval.ms", 60000)
 
                 // Send JSON without schema
                 .with("schemas.enable", false)
