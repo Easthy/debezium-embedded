@@ -15,8 +15,10 @@
         <!-- This is required only when MongoDB is configured to use authentication.-->
         <mongodb.user>adm</mongodb.user>
         <mongodb.password>123</mongodb.password>
-        <!-- DB & collection that would be monitored -->
+        <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
         <mongodb.database.whitelist>test</mongodb.database.whitelist>
+        <!-- A comma-separated list of regular expressions that match the fully-qualified namespaces of collections to be monitored.
+             * Fully-qualified namespaces for collections are of the form {@code <databaseName>.<collectionName>}. -->
         <mongodb.collection.whitelist>test.producers</mongodb.collection.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mongodb-offset.dat` -->
         <offset.storage.file.filename>mongodb-offset.dat</offset.storage.file.filename>

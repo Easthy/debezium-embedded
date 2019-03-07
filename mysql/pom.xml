@@ -14,8 +14,11 @@
         <mysql.database.port>3306</mysql.database.port>
         <mysql.database.user>debezium</mysql.database.user>
         <mysql.database.password>dbz</mysql.database.password>
-        <!-- DB & table that would be monitored -->
+        <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
         <mysql.database.whitelist>opencart</mysql.database.whitelist>
+        <!-- * A comma-separated list of regular expressions that match the fully-qualified names of tables to be monitored.
+             * Fully-qualified names for tables are of the form {@code <databaseName>.<tableName>} or
+             * {@code <databaseName>.<schemaName>.<tableName>} -->
         <mysql.table.whitelist>opencart.oc_product</mysql.table.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mysql-*.dat` -->
         <offset.storage.file.filename>mysql-offset.dat</offset.storage.file.filename>
