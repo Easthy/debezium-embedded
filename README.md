@@ -28,7 +28,7 @@ Debezium проверяет измененения в binlog(mysql), oplog(mongo
 Приложение останавливать `ctrl + c`
 
 #### Mongo
-Mongo всегда считывает oplog primary-сервера.
+Mongo всегда считывает oplog primary-сервера. Пользователь должен иметь права на чтение БД: `admin` (для считывание oplog), `config` (в случае sharded cluster). 
 
 #### MySQL
 Для корректной работы с mysql необходимо задать в конфигурационном файле mysql часовой пояс, например `default-time-zone='+00:00'`.
