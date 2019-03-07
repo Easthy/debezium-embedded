@@ -31,3 +31,5 @@ Mongo всегда считывает oplog primary-сервера.
 
 Приложение останавливать `ctrl + c`
 
+При старте приложение устанавливает режим global read, т.е. блокирует все записи в MySQL, на время чтения схемы БД и позиции в binlog.
+Пользователь MySQL, используемый debezium, должен иметь следующие права в БД: `SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT`
