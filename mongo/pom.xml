@@ -12,10 +12,10 @@
 
         <mongodb.database.hosts>localhost:27017</mongodb.database.hosts>
         <mongodb.database.name>test</mongodb.database.name>
-        <!-- This is required only when MongoDB is configured to use authentication.
-        <mongodb.user></mongodb.user>
-        <mongodb.password></mongodb.password>
-        -->
+        <!-- This is required only when MongoDB is configured to use authentication.-->
+        <mongodb.user>adm</mongodb.user>
+        <mongodb.password>123</mongodb.password>
+        <!-- DB & collection that would be monitored -->
         <mongodb.database.whitelist>test</mongodb.database.whitelist>
         <mongodb.collection.whitelist>test.producers</mongodb.collection.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mongodb-offset.dat` -->
@@ -103,6 +103,16 @@
                             <key>mongodb.name</key>
                             <value>${mongodb.database.name}</value>
                         </systemProperty>
+                        <!-- This is required only when MongoDB is configured to use authentication.-->
+                        <systemProperty>
+                            <key>mongodb.user</key>
+                            <value>${mongodb.user}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>mongodb.password</key>
+                            <value>${mongodb.password}</value>
+                        </systemProperty>
+                        <!-- -->
                         <systemProperty>
                             <key>database.whitelist</key>
                             <value>${mongodb.database.whitelist}</value>

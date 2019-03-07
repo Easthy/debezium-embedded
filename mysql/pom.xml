@@ -14,6 +14,7 @@
         <mysql.database.port>3306</mysql.database.port>
         <mysql.database.user>debezium</mysql.database.user>
         <mysql.database.password>dbz</mysql.database.password>
+        <!-- DB & table that would be monitored -->
         <mysql.database.whitelist>opencart</mysql.database.whitelist>
         <mysql.table.whitelist>opencart.oc_product</mysql.table.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mysql-*.dat` -->
