@@ -28,7 +28,8 @@ RUN mkdir ~/.aws
 COPY conf/credentials ~/.aws/credentials
 
 # Enabling binlog
-COPY conf/mysql.cnf /etc/mysql/conf.d
+COPY conf/mysql.cnf /etc/mysql/conf.d/mysql.cnf
+RUN chmod 0444 /etc/mysql/conf.d/mysql.cnf
 
 # Copy query
 COPY query/mongo-create-user.js /mongo-create-user.js
