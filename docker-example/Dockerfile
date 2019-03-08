@@ -20,8 +20,7 @@ RUN apt-get update && apt-get install -y \
   && mkdir /u && mkdir /u/apps && cd /u/apps && git clone https://github.com/Easthy/debezium-embedded.git \
   && cd /u/apps/debezium-embedded/mysql && mvn clean install \
   && cd /u/apps/debezium-embedded/mongo && mvn clean install \
-  && cd /u/apps && git clone https://github.com/marcusberro/mongodb-replicaset.git \
-  && cd /etc/mysql/conf.d/
+  && cd /u/apps && git clone https://github.com/marcusberro/mongodb-replicaset.git
 
 # Configuring aws
 RUN mkdir ~/.aws
