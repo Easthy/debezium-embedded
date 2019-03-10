@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Move aws credentials files
+mv /credentials ~/.aws/credentials
+
 # Start MySQL
 service mysql start
 mysql -u root -e "GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT, USAGE ON *.* TO 'debezium' IDENTIFIED BY 'dbz'";
@@ -7,13 +10,12 @@ mysql -u root -e "CREATE database opencart; use opencart; CREATE TABLE oc_produc
 
 
 # Start Mongo
-USER mongodb
 cd /u/apps/mongodb-replicaset/01-simple-replset
 bash stop-cluster.sh
 bash start-cluster.sh
 
+
 # Create user
-USER root
 : ${MONGO_HOST:=localhost}
 : ${MONGO_PORT:=27017}
 

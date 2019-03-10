@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 
 # Configuring aws
 RUN mkdir ~/.aws
-COPY conf/credentials ~/.aws/credentials
+COPY conf/credentials /credentials
 
 # Enabling binlog
 COPY conf/mysql.cnf /etc/mysql/conf.d/mysql.cnf
