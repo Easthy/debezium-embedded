@@ -3,17 +3,27 @@
 # Start MySQL
 service mysql start
 mysql -u root -e "GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT, USAGE ON *.* TO 'debezium' IDENTIFIED BY 'dbz'";
-mysql -u root -e "CREATE database opencart; use opencart; CREATE TABLE oc_product(id int, name text)";
+mysql -u root -e "CREATE database opencart; use opencart; CREATE TABLE oc_product(id serial primary key, name text)";
 
 
 # Start Mongo
-cd /u/apps/mongodb-replicaset/01-simple-replset && bash stop-cluster.sh && bash start-cluster.sh && bash start-replication.sh
+USER mongodb
+cd /u/apps/mongodb-replicaset/01-simple-replset
+bash stop-cluster.sh
+bash start-cluster.sh
+
+# Create user
+USER root
+: ${MONGO_HOST:=localhost}
+: ${MONGO_PORT:=27017}
+
+until nc -z $MONGO_HOST $MONGO_PORT
+do
+    echo "Waiting for Mongo ($MONGO_HOST:$MONGO_PORT) to start..."
+    sleep 0.5
+done
+
+bash start-replication.sh
 mongo --port 27017 < '/mongo-create-user.js'
 
-
-# sudo docker build /home/tolik/u/apps/debezium/docker-example/ --tag=debezium --no-cache
-# sudo docker run debezium
-# 
-# sudo docker exec -it 7e3916df4bb6 /bin/bash && cd /u/apps/debezium-embedded/mongo && mvn exec:java
-# sudo docker exec -it 7e3916df4bb6 /bin/bash && cd /u/apps/debezium-embedded/mysql && mvn exec:java
-
+tail -f '/dev/null'
