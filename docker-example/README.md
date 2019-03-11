@@ -17,7 +17,7 @@
 >2019-03-11 15:12:02,019 INFO   MongoDB|test|task  1 records sent for replica set 'rs', last offset: {sec=1552317121, ord=1, h=5372230464836817420}   [io.debezium.connector.mongodb.MongoDbConnectorTask]
 
 #### Настройки aws  
-Файл `debezium-embedded/docker-example/conf/credentials/` должен содержать параметры aws_access_key_id, aws_secret_access_key. Пример содержимого:  
+Файл `debezium-embedded/docker-example/conf/credentials` должен содержать параметры aws_access_key_id, aws_secret_access_key. Пример содержимого:  
 
 [default]  
 aws_access_key_id = XXXIAJRXDAJDXXXXLYXXX  
