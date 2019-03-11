@@ -19,7 +19,7 @@
 #### Настройки aws  
 Файл `debezium-embedded/docker-example/conf/credentials/` должен содержать параметры aws_access_key_id, aws_secret_access_key. Пример содержимого:  
 
-[default]
+[default]  
 aws_access_key_id = XXXIAJRXDAJDXXXXLYXXX  
 aws_secret_access_key = XX31Yj7XXXDC8oT7XXX6pXXXbcgWVZ+e9G/X7X  
 region = eu-central-1  
