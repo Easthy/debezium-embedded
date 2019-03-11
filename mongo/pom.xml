@@ -13,8 +13,8 @@
         <mongodb.database.hosts>localhost:27017</mongodb.database.hosts>
         <mongodb.database.name>test</mongodb.database.name>
         <!-- This is required only when MongoDB is configured to use authentication.-->
-        <mongodb.user>adm</mongodb.user>
-        <mongodb.password>123</mongodb.password>
+        <mongodb.user>dbAdmin</mongodb.user>
+        <mongodb.password>dbAdmin</mongodb.password>
         <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
         <mongodb.database.whitelist>test</mongodb.database.whitelist>
         <!-- A comma-separated list of regular expressions that match the fully-qualified namespaces of collections to be monitored.
