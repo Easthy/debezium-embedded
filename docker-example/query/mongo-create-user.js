@@ -1,5 +1,12 @@
-use test; 
+db = db.getSiblingDB("admin");
+db.auth("dbAdmin","dbAdmin");
 
-db.createUser( { user: "adm", pwd: "123", roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] } ); 
-
-db.createCollection("producers", { capped : true, size : 5242880, max : 5000 } ); 
+db = db.getSiblingDB("test");
+db.createUser(
+   {
+     user: "dbAdmin",
+     pwd: "dbAdmin",
+     roles: [ "readWrite", "dbAdmin" ]
+   }
+)
+db.createCollection("game_events", { capped : true, size : 5242880, max : 5000 } );
