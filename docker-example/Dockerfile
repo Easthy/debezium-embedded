@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
   curl \
   nano \
   awscli \
-  netcat \
   && mkdir /u && mkdir /u/apps && cd /u/apps && git clone https://github.com/Easthy/debezium-embedded.git \
   && cd /u/apps/debezium-embedded/mysql && mvn clean install \
   && cd /u/apps/debezium-embedded/mongo && mvn clean install \

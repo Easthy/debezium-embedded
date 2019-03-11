@@ -15,17 +15,17 @@
         <mysql.database.user>debezium</mysql.database.user>
         <mysql.database.password>dbz</mysql.database.password>
         <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
-        <mysql.database.whitelist>opencart</mysql.database.whitelist>
+        <mysql.database.whitelist>testdb</mysql.database.whitelist>
         <!-- * A comma-separated list of regular expressions that match the fully-qualified names of tables to be monitored.
              * Fully-qualified names for tables are of the form {@code <databaseName>.<tableName>} or
              * {@code <databaseName>.<schemaName>.<tableName>} -->
-        <mysql.table.whitelist>opencart.oc_product</mysql.table.whitelist>
+        <mysql.table.whitelist>testdb.payments,testdb.users</mysql.table.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mysql-*.dat` -->
         <offset.storage.file.filename>mysql-offset.dat</offset.storage.file.filename>
         <database.history.file.filename>mysql-history.dat</database.history.file.filename>
 
         <kinesis.region>eu-central-1</kinesis.region>
-        <kinesis.stream.name>kinesis.opencart.oc_product</kinesis.stream.name>
+        <kinesis.stream.name>kinesis.demo-stream</kinesis.stream.name>
 
         <mysql.init.timeout>30000</mysql.init.timeout>
 

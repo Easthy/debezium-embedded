@@ -6,26 +6,15 @@ mv /credentials ~/.aws/credentials
 # Start MySQL
 service mysql start
 mysql -u root -e "GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT, USAGE ON *.* TO 'debezium' IDENTIFIED BY 'dbz'";
-mysql -u root -e "CREATE database opencart; use opencart; CREATE TABLE oc_product(id serial primary key, name text)";
+mysql -u root -e "CREATE database testdb; use testdb; CREATE TABLE payments(id serial primary key, name text, sum_usd double precision); ";
+mysql -u root -e "use testdb; CREATE TABLE users(id serial primary key, username text, created date); ";
 
 
 # Start Mongo
-cd /u/apps/mongodb-replicaset/01-simple-replset
+cd /u/apps/mongodb-replicaset/03-enable-auth-replset
 bash stop-cluster.sh
 bash start-cluster.sh
-
-
-# Create user
-: ${MONGO_HOST:=localhost}
-: ${MONGO_PORT:=27017}
-
-until nc -z $MONGO_HOST $MONGO_PORT
-do
-    echo "Waiting for Mongo ($MONGO_HOST:$MONGO_PORT) to start..."
-    sleep 0.5
-done
-
 bash start-replication.sh
-mongo --port 27017 < '/mongo-create-user.js'
 
+# Prevent from exiting
 tail -f '/dev/null'
