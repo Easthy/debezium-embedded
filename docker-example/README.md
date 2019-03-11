@@ -13,3 +13,5 @@
 4.2.1 Подключиься к контейнеру Docker и выполнить: `cd /u/apps/debezium-embedded/mongo && mvn exec:java`    
 4.2.2 Подключить в новом терминале к контейру Docker, выполнить `mongo --port 27023`, внести изменения в коллекцию game_events (имя БД test, user: dbAdmin, pass: dbAdmin) - данные будут отправлены в stream kinesis. При отправке данных в терминал будет выведено подобное сообщение:  
 >2019-03-11 15:12:02,019 INFO   MongoDB|test|task  1 records sent for replica set 'rs', last offset: {sec=1552317121, ord=1, h=5372230464836817420}   [io.debezium.connector.mongodb.MongoDbConnectorTask]
+
+#### Файл `debezium/docker-example/ccredentialsonf/` должен содержать параметры aws_access_key_id, aws_secret_access_key
