@@ -34,8 +34,6 @@
         <kinesis.region>eu-central-1</kinesis.region>
         <kinesis.stream.name>kinesis.demo-stream</kinesis.stream.name>
 
-        <mysql.init.timeout>30000</mysql.init.timeout>
-
         <version.debezium>0.9.2.Final</version.debezium>
         <version.debezium.tag>0.8</version.debezium.tag>
         <version.kinesis.client>1.9.0</version.kinesis.client>
