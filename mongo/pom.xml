@@ -22,7 +22,20 @@
         <mongodb.collection.whitelist>test.game_events</mongodb.collection.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mongodb-offset.dat` -->
         <offset.storage.file.filename>mongodb-offset.dat</offset.storage.file.filename>
-        
+        <!-- Maximum number of threads used to perform an intial sync of the collections in a replica set. -->
+        <initial.sync.max.threads>1</initial.sync.max.threads>
+        <!-- Should connector use SSL to connect to MongoDB instances -->
+        <mongodb.ssl.enabled>false</mongodb.ssl.enabled>
+        <!-- Reconnect configuration -->
+        <!-- The initial delay when trying to reconnect to a primary after a connection cannot be made or when no primary is available. 
+             Defaults to 1 second (1000 ms). -->
+        <connect.backoff.initial.delay.ms>1000</connect.backoff.initial.delay.ms>
+        <!-- The maximum delay when trying to reconnect to a primary after a connection cannot be made or when no primary is available. 
+             Defaults to 120 second (120,000 ms). -->
+        <connect.backoff.max.delay.ms>120000</connect.backoff.max.delay.ms>
+        <!-- Maximum number of failed connection attempts to a replica set primary before an exception occurs and task is aborted. -->
+        <connect.max.attempts>16</connect.max.attempts>
+
         <version.mongodb.driver>3.10.1</version.mongodb.driver>
 
         <kinesis.region>eu-central-1</kinesis.region>
@@ -113,6 +126,27 @@
                         <systemProperty>
                             <key>mongodb.password</key>
                             <value>${mongodb.password}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>initial.sync.max.threads</key>
+                            <value>${initial.sync.max.threads}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>mongodb.ssl.enabled</key>
+                            <value>${mongodb.ssl.enabled}</value>
+                        </systemProperty>
+                        <!-- Reconnect configuration -->
+                        <systemProperty>
+                            <key>connect.backoff.initial.delay.ms</key>
+                            <value>${connect.backoff.initial.delay.ms}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>connect.backoff.max.delay.ms</key>
+                            <value>${connect.backoff.max.delay.ms}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>connect.max.attempts</key>
+                            <value>${connect.max.attempts}</value>
                         </systemProperty>
                         <!-- -->
                         <systemProperty>
