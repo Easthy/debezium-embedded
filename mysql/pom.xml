@@ -24,6 +24,13 @@
         <offset.storage.file.filename>mysql-offset.dat</offset.storage.file.filename>
         <database.history.file.filename>mysql-history.dat</database.history.file.filename>
 
+        <!-- Maximum time in milliseconds to wait after trying to connect to the database before timing out. -->
+        <connect.timeout.ms>30000</connect.timeout.ms>
+        <!-- Whether a separate thread should be used to ensure the connection is kept alive. -->
+        <connect.keep.alive>true</connect.keep.alive>
+        <!-- Interval in milliseconds to wait for connection checking if keep alive thread is used. -->
+        <connect.keep.alive.interval.ms>60000</connect.keep.alive.interval.ms>
+
         <kinesis.region>eu-central-1</kinesis.region>
         <kinesis.stream.name>kinesis.demo-stream</kinesis.stream.name>
 
@@ -122,6 +129,18 @@
                         <systemProperty>
                             <key>database.history.file.filename</key>
                             <value>${database.history.file.filename}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>connect.timeout.ms</key>
+                            <value>${connect.timeout.ms}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>connect.keep.alive</key>
+                            <value>${connect.keep.alive}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>connect.keep.alive.interval.ms</key>
+                            <value>${connect.keep.alive.interval.ms}</value>
                         </systemProperty>
                         <systemProperty>
                             <key>kinesis.region</key>
