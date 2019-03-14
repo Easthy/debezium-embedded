@@ -12,6 +12,5 @@
 > 2019-03-14 18:38:18,345 INFO Stopping MongoDB task [io.debezium.connector.mongodb.MongoDbConnectorTask]  
 > 2019-03-14 18:38:18,346 INFO Stopped MongoDB replication task by stopping 1 replicator threads [io.debezium.connector.mongodb.MongoDbConnectorTask]  
 > 2019-03-14 18:38:19,313 INFO Stopping MongoDB connector [io.debezium.connector.mongodb.MongoDbConnector]  
-> 2019-03-14 18:38:19,315 INFO Stopped MongoDB connector [io.debezium.connector.mongodb.MongoDbConnector]  
 > 2019-03-14 18:38:19,316 ERROR Error while trying to run connector class 'io.debezium.connector.mongodb.MongoDbConnector' [io.debezium.embedded.EmbeddedEngine]  
 > 2019-03-14 18:38:19,316 ERROR Error while trying to get information about the replica sets [io.debezium.connector.mongodb.ReplicaSetMonitorThread]  
