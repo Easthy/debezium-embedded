@@ -29,12 +29,12 @@
         <!-- Reconnect configuration -->
         <!-- The initial delay when trying to reconnect to a primary after a connection cannot be made or when no primary is available. 
              Defaults to 1 second (1000 ms). -->
-        <connect.backoff.initial.delay.ms>10000</connect.backoff.initial.delay.ms>
+        <connect.backoff.initial.delay.ms>1000</connect.backoff.initial.delay.ms>
         <!-- The maximum delay when trying to reconnect to a primary after a connection cannot be made or when no primary is available. 
              Defaults to 120 second (120,000 ms). -->
-        <connect.backoff.max.delay.ms>40000</connect.backoff.max.delay.ms>
+        <connect.backoff.max.delay.ms>120000</connect.backoff.max.delay.ms>
         <!-- Maximum number of failed connection attempts to a replica set primary before an exception occurs and task is aborted. -->
-        <connect.max.attempts>10</connect.max.attempts>
+        <connect.max.attempts>20</connect.max.attempts>
 
         <version.mongodb.driver>3.10.1</version.mongodb.driver>
 
