@@ -2,6 +2,7 @@ package com.github.speedwing.log4j.cloudwatch.appender;
 
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.regions.providers.DefaultAwsRegionProviderChain;
+import software.amazon.awssdk.auth.credentials.InstanceProfileCredentialsProvider;
 import software.amazon.awssdk.services.cloudwatchlogs.CloudWatchLogsClient;
 import software.amazon.awssdk.services.cloudwatchlogs.model.*;
 import org.apache.log4j.AppenderSkeleton;
@@ -206,8 +207,10 @@ public class CloudwatchAppender extends AppenderSkeleton {
             Logger.getRootLogger().error("Could not initialise CloudwatchAppender because either or both LogGroupName(" + logGroupName + ") and LogStreamName(" + logStreamName + ") are null or empty");
             this.close();
         } else {
+            InstanceProfileCredentialsProvider cr = InstanceProfileCredentialsProvider.builder().build();
             this.awsLogsClient = CloudWatchLogsClient.builder()
                     .region(this.getAwsRegion())
+                    .credentialsProvider(cr)
                     .build();
             loggingEventsQueue = new LinkedBlockingQueue<>(queueLength);
             try {

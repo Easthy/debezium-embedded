@@ -10,22 +10,24 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <mongodb.database.hosts>localhost:27023</mongodb.database.hosts>
-        <mongodb.database.name>test</mongodb.database.name>
-        <!-- This is required only when MongoDB is configured to use authentication.-->
+        <mongodb.database.hosts>rs0/127.0.0.1:27017</mongodb.database.hosts>
+        <mongodb.database.name>dbname</mongodb.database.name>
+        <!-- This is required only when MongoDB is configured to use authentication.
         <mongodb.user>dbAdmin</mongodb.user>
-        <mongodb.password>dbAdmin</mongodb.password>
+        <mongodb.password>dbAdmin</mongodb.password>-->
         <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
-        <mongodb.database.whitelist>test</mongodb.database.whitelist>
+        <mongodb.database.whitelist>dbname</mongodb.database.whitelist>
         <!-- A comma-separated list of regular expressions that match the fully-qualified namespaces of collections to be monitored.
              * Fully-qualified namespaces for collections are of the form {@code <databaseName>.<collectionName>}. -->
-        <mongodb.collection.whitelist>test.game_events</mongodb.collection.whitelist>
+        <mongodb.collection.whitelist>dbname.collection1</mongodb.collection.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mongodb-offset.dat` -->
         <offset.storage.file.filename>mongodb-offset.dat</offset.storage.file.filename>
         <!-- Maximum number of threads used to perform an intial sync of the collections in a replica set. -->
         <initial.sync.max.threads>1</initial.sync.max.threads>
         <!-- Should connector use SSL to connect to MongoDB instances -->
         <mongodb.ssl.enabled>false</mongodb.ssl.enabled>
+	    <mongodb.snapshot.mode>never</mongodb.snapshot.mode>
+	    <mongodb.members.auto.discover>true</mongodb.members.auto.discover>
         <!-- Reconnect configuration -->
         <!-- The initial delay when trying to reconnect to a primary after a connection cannot be made or when no primary is available. 
              Defaults to 1 second (1000 ms). -->
@@ -97,6 +99,11 @@
                 <artifactId>cloudwatchlogs</artifactId>
                 <version>2.5.6</version>
             </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>ec2</artifactId>
+                <version>2.5.6</version>
+            </dependency>
     </dependencies>
     <build>
         <pluginManagement>
@@ -123,7 +130,16 @@
                             <key>mongodb.name</key>
                             <value>${mongodb.database.name}</value>
                         </systemProperty>
-                        <!-- This is required only when MongoDB is configured to use authentication.-->
+                        <systemProperty>
+                            <key>snapshot.mode</key>
+                            <value>${mongodb.snapshot.mode}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <key>mongodb.members.auto.discover</key>
+                            <value>${mongodb.members.auto.discover}</value>
+                        </systemProperty>
+
+                        <!-- This is required only when MongoDB is configured to use authentication.
                         <systemProperty>
                             <key>mongodb.user</key>
                             <value>${mongodb.user}</value>
@@ -132,6 +148,7 @@
                             <key>mongodb.password</key>
                             <value>${mongodb.password}</value>
                         </systemProperty>
+			            -->
                         <systemProperty>
                             <key>initial.sync.max.threads</key>
                             <value>${initial.sync.max.threads}</value>

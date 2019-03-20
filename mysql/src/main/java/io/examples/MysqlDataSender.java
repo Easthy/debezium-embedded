@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.kinesis.AmazonKinesis;
 import com.amazonaws.services.kinesis.AmazonKinesisClientBuilder;
@@ -61,7 +62,7 @@ public class MysqlDataSender implements Runnable {
 
         final String regionName = config.getString(KINESIS_REGION_CONF_NAME);
 
-        final AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider("default");
+        final AWSCredentialsProvider credentialsProvider = new EC2ContainerCredentialsProviderWrapper();
 
         kinesisClient = AmazonKinesisClientBuilder.standard()
                 .withCredentials(credentialsProvider)

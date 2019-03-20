@@ -10,18 +10,20 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <mysql.database.hostname>localhost</mysql.database.hostname>
+        <mysql.database.hostname>127.0.0.1</mysql.database.hostname>
         <mysql.database.port>3306</mysql.database.port>
         <mysql.database.user>debezium</mysql.database.user>
-        <mysql.database.password>dbz</mysql.database.password>
+        <mysql.database.password>password</mysql.database.password>
         <!-- A comma-separated list of regular expressions that match the databases to be monitored. -->
-        <mysql.database.whitelist>testdb</mysql.database.whitelist>
+        <mysql.database.whitelist>dbname1, dbname2, dbname3</mysql.database.whitelist>
         <!-- * A comma-separated list of regular expressions that match the fully-qualified names of tables to be monitored.
              * Fully-qualified names for tables are of the form {@code <databaseName>.<tableName>} or
              * {@code <databaseName>.<schemaName>.<tableName>} -->
-        <mysql.table.whitelist>testdb.payments,testdb.users</mysql.table.whitelist>
+        <mysql.table.whitelist>dbname1.payments, dbname1.users, dbname2.payments, dbname2.users, dbname3.payments, dbname3.users</mysql.table.whitelist>
         <!-- Could be set as full path `/u/apps/debezium/mongo/mysql-*.dat` -->
+
         <offset.storage.file.filename>mysql-offset.dat</offset.storage.file.filename>
+        <offset.flush.interval.ms>10000</offset.flush.interval.ms>
         <database.history.file.filename>mysql-history.dat</database.history.file.filename>
 
         <!-- Maximum time in milliseconds to wait after trying to connect to the database before timing out. -->
@@ -98,6 +100,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
                 <configuration>
                     <mainClass>io.debezium.examples.kinesis.MysqlDataSender</mainClass>
                     <systemProperties>
